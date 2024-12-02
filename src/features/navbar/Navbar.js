@@ -12,7 +12,7 @@ import {
   ShoppingCartIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-
+import { Link } from "react-router-dom";
 const user = {
   name: "Tom Cook",
   email: "tom@example.com",
@@ -32,19 +32,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 function Navbar({ Children }) {
-  return (
-    <>
+return (
+<>
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="shrink-0">
-                  <img
-                    alt="Your Company"
-                    src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                    className="size-8"
-                  />
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
@@ -57,9 +52,7 @@ function Navbar({ Children }) {
                           item.current
                             ? "bg-gray-900 text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                      >
+                          "rounded-md px-3 py-2 text-sm font-medium")}>
                         {item.name}
                       </a>
                     ))}
@@ -68,15 +61,16 @@ function Navbar({ Children }) {
               </div>
               <div className="hidden md:block">
                 <div className="ml-4 flex items-center md:ml-6">
+                  <Link to="/cart">
                   <button
                     type="button"
                     className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
+                  ><span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1  mb-7 -ml-3  text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                  View Notification
+                </span>                
                     <ShoppingCartIcon aria-hidden="true" className="h-6 w-6" />
                   </button>
-                  <span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1  mb-7 -ml-3  text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                    3
-                  </span>
+                  </Link>
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
@@ -92,14 +86,12 @@ function Navbar({ Children }) {
                     </div>
                     <MenuItems
                       transition
-                      className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-                    >
+                      className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
                       {userNavigation.map((item) => (
                         <MenuItem key={item.name}>
                           <a
                             href={item.href}
-                            className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
-                          >
+                            className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none">
                             {item.name}
                           </a>
                         </MenuItem>
@@ -137,9 +129,7 @@ function Navbar({ Children }) {
                     item.current
                       ? "bg-gray-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block rounded-md px-3 py-2 text-base font-medium"
-                  )}
-                >
+                    "block rounded-md px-3 py-2 text-base font-medium")}>
                   {item.name}
                 </DisclosureButton>
               ))}
@@ -149,9 +139,8 @@ function Navbar({ Children }) {
                 <div className="shrink-0">
                   <img
                     alt=""
-                    src={user.imageUrl}
-                    className="size-10 rounded-full"
-                  />
+                    src={""}
+                    className="size-10 rounded-full"/>
                 </div>
                 <div className="ml-3">
                   <div className="text-base/5 font-medium text-white">
@@ -161,12 +150,14 @@ function Navbar({ Children }) {
                     {user.email}
                   </div>
                 </div>
+                <Link to="/cart">
                 <button
                   type="button"
                   className="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   <ShoppingCartIcon aria-hidden="true" className="w-6 h-6" />
                 </button>
+                </Link>
                 <span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 mb-7 -ml-3 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
                   3
                 </span>
