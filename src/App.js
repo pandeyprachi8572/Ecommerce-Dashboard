@@ -1,5 +1,6 @@
 import "./App.css";
 import CartPage from "./pages/CartPage";
+import Checkout from "./pages/Checkout";
 // Uncomment and use the Home component or define it if not yet created
 import Home from "./pages/Home"; 
 import LoginPage from "./pages/LoginPage";
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path:"/cart",
     element:<CartPage/>,
+  },
+  {
+    path:"/checkout",
+    element:<Checkout/>,
   }
 ]);
 function App() {
