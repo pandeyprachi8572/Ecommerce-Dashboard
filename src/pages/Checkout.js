@@ -1,4 +1,4 @@
- 
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const products = [
     {
@@ -24,14 +24,50 @@ const products = [
     },
     // More products...
   ]
+
+  const addresss = [
+    {
+      name: 'John wick',
+  street :"11th Main",
+  city :" Delhi",
+  pinCode :110001,
+  state :'Delhi',
+  phone :7896543256
+    },
+    {
+    name: 'rohan wick',
+  street :"15th Main",
+  city :" Banglore ",
+  pinCode :989809,
+  state :'karnatak',
+  phone :7896543908
+  },
+  {
+    name: 'sohan wick',
+  street :"20th Main",
+  city :" kolkata ",
+  pinCode :989809,
+  state :'karnatak',
+  phone :7896555908
+  },
+  {
+   name: 'Mohan wick',
+  street :"20th Main",
+  city :" Mumbai ",
+  pinCode :989809,
+  state :'karnatak',
+  phone :789659897,
+  }
+   
+  ]
+  
 //const count = useSelector(selectCount);
 //const dispatch = useDispatch();
-const [open, setOpen] = useState(true)
 function Checkout () {
-    return (
-        <>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+const [open, setOpen] = useState(true)
+return (
+<>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
         <div className="lg:col-span-3">
         <form className="bg-white px-5">
@@ -39,7 +75,6 @@ function Checkout () {
            <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base/7 font-semibold text-gray-900">Personal Information</h2>
           <p className="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
-
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
@@ -55,7 +90,6 @@ function Checkout () {
                 />
               </div>
             </div>
-
             <div className="sm:col-span-3">
               <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-900">
                 Last name
@@ -70,7 +104,6 @@ function Checkout () {
                 />
               </div>
             </div>
-
             <div className="sm:col-span-4">
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                 Email address
@@ -85,7 +118,6 @@ function Checkout () {
                 />
               </div>
             </div>
-
             <div className="sm:col-span-3">
               <label htmlFor="country" className="block text-sm/6 font-medium text-gray-900">
                 Country
@@ -101,13 +133,8 @@ function Checkout () {
                   <option>Canada</option>
                   <option>Mexico</option>
                 </select>
-                <ChevronDownIcon
-                  aria-hidden="true"
-                  className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-                />
               </div>
             </div>
-
             <div className="col-span-full">
               <label htmlFor="street-address" className="block text-sm/6 font-medium text-gray-900">
                 Street address
@@ -122,7 +149,6 @@ function Checkout () {
                 />
               </div>
             </div>
-
             <div className="sm:col-span-2 sm:col-start-1">
               <label htmlFor="city" className="block text-sm/6 font-medium text-gray-900">
                 City
@@ -137,7 +163,6 @@ function Checkout () {
                 />
               </div>
             </div>
-
             <div className="sm:col-span-2">
               <label htmlFor="region" className="block text-sm/6 font-medium text-gray-900">
                 State / Province
@@ -152,7 +177,6 @@ function Checkout () {
                 />
               </div>
             </div>
-
             <div className="sm:col-span-2">
               <label htmlFor="postal-code" className="block text-sm/6 font-medium text-gray-900">
                 ZIP / Postal code
@@ -169,188 +193,70 @@ function Checkout () {
             </div>
           </div>
         </div>
-
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base/7 font-semibold text-gray-900">Notifications</h2>
+          <h2 className="text-base/7 font-semibold text-gray-900">Address</h2>
           <p className="mt-1 text-sm/6 text-gray-600">
-            We'll always let you know about important changes, but you pick what else you want to hear about.
+      Choose from Existing addresses
           </p>
+          <ul role="list" className="divide-y divide-gray-100">
+      {addresss.map((addresss) => (
+        <li key={addresss.email} className="flex justify-between gap-x-6 py-5">
+          <div className="flex min-w-0 gap-x-4">
+            
+            <div className="min-w-0 flex-auto">
+              <p className="text-sm/6 font-semibold text-gray-900">{addresss.name}</p>
+              <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.street}</p>
+              <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.city}</p>
+              <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.pinCode}</p>
+              
+              <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.state}</p>
+              <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.phone}</p>
 
-          <div className="mt-10 space-y-10">
-            <fieldset>
-              <legend className="text-sm/6 font-semibold text-gray-900">By email</legend>
-              <div className="mt-6 space-y-6">
-                <div className="flex gap-3">
-                  <div className="flex h-6 shrink-0 items-center">
-                    <div className="group grid size-4 grid-cols-1">
-                      <input
-                        defaultChecked
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        aria-describedby="comments-description"
-                        className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                      />
-                      <svg
-                        fill="none"
-                        viewBox="0 0 14 14"
-                        className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25"
-                      >
-                        <path
-                          d="M3 8L6 11L11 3.5"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-[:checked]:opacity-100"
-                        />
-                        <path
-                          d="M3 7H11"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-[:indeterminate]:opacity-100"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-sm/6">
-                    <label htmlFor="comments" className="font-medium text-gray-900">
-                      Comments
-                    </label>
-                    <p id="comments-description" className="text-gray-500">
-                      Get notified when someones posts a comment on a posting.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <div className="flex h-6 shrink-0 items-center">
-                    <div className="group grid size-4 grid-cols-1">
-                      <input
-                        id="candidates"
-                        name="candidates"
-                        type="checkbox"
-                        aria-describedby="candidates-description"
-                        className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                      />
-                      <svg
-                        fill="none"
-                        viewBox="0 0 14 14"
-                        className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25"
-                      >
-                        <path
-                          d="M3 8L6 11L11 3.5"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-[:checked]:opacity-100"
-                        />
-                        <path
-                          d="M3 7H11"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-[:indeterminate]:opacity-100"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-sm/6">
-                    <label htmlFor="candidates" className="font-medium text-gray-900">
-                      Candidates
-                    </label>
-                    <p id="candidates-description" className="text-gray-500">
-                      Get notified when a candidate applies for a job.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <div className="flex h-6 shrink-0 items-center">
-                    <div className="group grid size-4 grid-cols-1">
-                      <input
-                        id="offers"
-                        name="offers"
-                        type="checkbox"
-                        aria-describedby="offers-description"
-                        className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                      />
-                      <svg
-                        fill="none"
-                        viewBox="0 0 14 14"
-                        className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25"
-                      >
-                        <path
-                          d="M3 8L6 11L11 3.5"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-[:checked]:opacity-100"
-                        />
-                        <path
-                          d="M3 7H11"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-[:indeterminate]:opacity-100"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-sm/6">
-                    <label htmlFor="offers" className="font-medium text-gray-900">
-                      Offers
-                    </label>
-                    <p id="offers-description" className="text-gray-500">
-                      Get notified when a candidate accepts or rejects an offer.
-                    </p>
-                  </div>
-                </div>
               </div>
-            </fieldset>
+
+            </div>
+            
+          
+         
+        </li>
+      ))}
+    </ul>
+          <div className="mt-10 space-y-10">
+           
 
             <fieldset>
-              <legend className="text-sm/6 font-semibold text-gray-900">Push notifications</legend>
-              <p className="mt-1 text-sm/6 text-gray-600">These are delivered via SMS to your mobile phone.</p>
+              <legend className="text-sm/6 font-semibold text-gray-900"> Payment Methods </legend>
+              <p className="mt-1 text-sm/6 text-gray-600"> Choose One  </p>
               <div className="mt-6 space-y-6">
                 <div className="flex items-center gap-x-3">
                   <input
                     defaultChecked
-                    id="push-everything"
+                    id="cash "
                     name="push-notifications"
                     type="radio"
                     className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                   />
                   <label htmlFor="push-everything" className="block text-sm/6 font-medium text-gray-900">
-                    Everything
+                  Cash
                   </label>
                 </div>
                 <div className="flex items-center gap-x-3">
                   <input
-                    id="push-email"
+                    id="card"   
                     name="push-notifications"
                     type="radio"
                     className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                   />
                   <label htmlFor="push-email" className="block text-sm/6 font-medium text-gray-900">
-                    Same as email
+                    Card Payment 
                   </label>
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <input
-                    id="push-nothing"
-                    name="push-notifications"
-                    type="radio"
-                    className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
-                  />
-                  <label htmlFor="push-nothing" className="block text-sm/6 font-medium text-gray-900">
-                    No push notifications
-                  </label>
+                
                 </div>
               </div>
             </fieldset>
           </div>
         </div>
       </div>
-
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button type="button" className="text-sm/6 font-semibold text-gray-900">
           Cancel
@@ -363,9 +269,7 @@ function Checkout () {
         </button>
       </div>
     </form>
-    <div className="lg:col-span-2">
-
-        
+    <div className="lg:col span-2">
     <div className="mx-auto mt-12 max-w-7xl bg-white px-4 sm:px-6 lg:px-8">
     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
     <h2 className="text-4xl my-5 font-bold tracking-tight text-gray-900">Cart</h2>
