@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 //import { useDispatch } from "react-redux";
 //import { selectCount } from "./ProductListSlice";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
@@ -396,6 +397,7 @@ export default function ProductList() {
 
                         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                           {products.map((product) => (
+                            <Link to="product-detail">
                             <div key={product.id} className="group relative">
                               <img
                                 alt={product.imageAlt}
@@ -422,6 +424,7 @@ export default function ProductList() {
                                 </p>
                               </div>
                             </div>
+                            </Link>
                           ))}
                         </div>
                       </div>

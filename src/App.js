@@ -1,9 +1,11 @@
 import "./App.css";
+//import ProductDetail from "./features/product-list/components/ProductDeatail";
 import CartPage from "./pages/CartPage";
 import Checkout from "./pages/Checkout";
 // Uncomment and use the Home component or define it if not yet created
 import Home from "./pages/Home"; 
 import LoginPage from "./pages/LoginPage";
+import ProductDetailePage from "./pages/ProductDetailePage";
 import SignUpPage from "./pages/SignUpPage";
 import {
   createBrowserRouter,
@@ -29,7 +31,11 @@ const router = createBrowserRouter([
   {
     path:"/checkout",
     element:<Checkout/>,
-  }
+  },
+  {
+    path:"/product-detail",
+    element:<ProductDetailePage/>,
+  },
 ]);
 function App() {
   return (

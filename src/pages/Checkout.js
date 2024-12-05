@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const products = [
-    {
+{
       id: 1,
       name: 'Throwback Hip Bag',
       href: '#',
@@ -10,7 +10,7 @@ const products = [
       quantity: 1,
       imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
       imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-    },
+},
     {
       id: 2,
       name: 'Medium Stuff Satchel',
@@ -21,13 +21,12 @@ const products = [
       imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
       imageAlt:
         'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-    },
+ },
     // More products...
-  ]
-
-  const addresss = [
+]
+const addresss = [
     {
-      name: 'John wick',
+  name: 'John wick',
   street :"11th Main",
   city :" Delhi",
   pinCode :110001,
@@ -35,7 +34,7 @@ const products = [
   phone :7896543256
     },
     {
-    name: 'rohan wick',
+  name: 'rohan wick',
   street :"15th Main",
   city :" Banglore ",
   pinCode :989809,
@@ -43,7 +42,7 @@ const products = [
   phone :7896543908
   },
   {
-    name: 'sohan wick',
+  name: 'sohan wick',
   street :"20th Main",
   city :" kolkata ",
   pinCode :989809,
@@ -51,16 +50,14 @@ const products = [
   phone :7896555908
   },
   {
-   name: 'Mohan wick',
+  name: 'Mohan wick',
   street :"20th Main",
   city :" Mumbai ",
   pinCode :989809,
   state :'karnatak',
   phone :789659897,
-  }
-   
-  ]
-  
+}   
+]  
 //const count = useSelector(selectCount);
 //const dispatch = useDispatch();
 function Checkout () {
@@ -70,10 +67,10 @@ return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
         <div className="lg:col-span-3">
-        <form className="bg-white px-5">
+        <form className="bg-white px-5 mt-12 py-12">
         <div className="space-y-12">
            <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base/7 font-semibold text-gray-900">Personal Information</h2>
+          <h2 className="text-base/7 font-semibold text-xl text-gray-900">Personal Information</h2>
           <p className="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
@@ -104,11 +101,11 @@ return (
                 />
               </div>
             </div>
-            <div className="sm:col-span-4">
-              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+<div className="sm:col-span-4">
+<label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                 Email address
-              </label>
-              <div className="mt-2">
+</label>
+<div className="mt-2">
                 <input
                   id="email"
                   name="email"
@@ -135,7 +132,7 @@ return (
                 </select>
               </div>
             </div>
-            <div className="col-span-full">
+<div className="col-span-full">
               <label htmlFor="street-address" className="block text-sm/6 font-medium text-gray-900">
                 Street address
               </label>
@@ -192,38 +189,45 @@ return (
               </div>
             </div>
           </div>
-        </div>
-        <div className="border-b border-gray-900/10 pb-12">
+          <div className="mt-6 flex items-center justify-end gap-x-6">
+        <button type="button" className="text-sm/6 font-semibold text-gray-900">
+          Reset
+        </button>
+        <button
+          type="submit"
+          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Add Address
+        </button>
+      </div>
+        
           <h2 className="text-base/7 font-semibold text-gray-900">Address</h2>
           <p className="mt-1 text-sm/6 text-gray-600">
       Choose from Existing addresses
           </p>
-          <ul role="list" className="divide-y divide-gray-100">
+          <ul role="list">
       {addresss.map((addresss) => (
-        <li key={addresss.email} className="flex justify-between gap-x-6 py-5">
+        <li key={addresss.email} className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200 " >
           <div className="flex min-w-0 gap-x-4">
-            
+          
+                  <input 
+                    name="addresss"
+                    type="radio"
+                    className="h-4 w-4 border-gray-800 text-indigo-600"
+                  />
             <div className="min-w-0 flex-auto">
               <p className="text-sm/6 font-semibold text-gray-900">{addresss.name}</p>
               <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.street}</p>
               <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.city}</p>
               <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.pinCode}</p>
-              
               <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.state}</p>
               <p className="mt-1 truncate text-xs/5 text-gray-500">{addresss.phone}</p>
-
               </div>
-
-            </div>
-            
-          
-         
+            </div>         
         </li>
       ))}
     </ul>
           <div className="mt-10 space-y-10">
-           
-
             <fieldset>
               <legend className="text-sm/6 font-semibold text-gray-900"> Payment Methods </legend>
               <p className="mt-1 text-sm/6 text-gray-600"> Choose One  </p>
@@ -257,20 +261,11 @@ return (
           </div>
         </div>
       </div>
-      <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm/6 font-semibold text-gray-900">
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Save
-        </button>
-      </div>
+      
     </form>
+    </div>
     <div className="lg:col span-2">
-    <div className="mx-auto mt-12 max-w-7xl bg-white px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto mt-12 max-w-7xl bg-white px-0 sm:px-0 lg:px-0">
     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
     <h2 className="text-4xl my-5 font-bold tracking-tight text-gray-900">Cart</h2>
                   <div className="flow-root">
@@ -292,7 +287,7 @@ return (
                             </div>
                             <div className="flex flex-1 items-end justify-between text-sm">
                               <div className="text-gray-500">
-                            <label htmlFor="quantity" className="inline mr-5 text-sm font-medium leading-6 text-gray-900"> Password </label>
+                            <label htmlFor="quantity" className="inline mr-5 text-sm font-medium leading-6 text-gray-900"> Qty </label>
                                 <select >
                                     <option value="1"> 1 </option>
                                     <option value="2"> 2 </option> 
@@ -310,7 +305,7 @@ return (
                     </ul>
                   </div>
                   </div>
-   <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                 <div className="flex justify-between text-base font-medium text-gray-900">
                   <p>Subtotal</p>
                   <p>$262.00</p>
@@ -318,10 +313,10 @@ return (
                 <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                 <div className="mt-6">
                   <Link
-                    to="/checkout"
+                    to="/Checkout"
                     className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                   >
-                    Checkout
+                    Pay and Order 
                   </Link>
                 </div>
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
@@ -343,8 +338,7 @@ return (
     </div>
     </div>
     </div>
-    </div>
     </>
   )
 }
-export default  Checkout;
+export default  Checkout;                                                                                 
