@@ -36,6 +36,9 @@ return (
 <>
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
+          {({open})=>(
+            <>
+            
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
@@ -176,6 +179,8 @@ return (
               </div>
             </div>
           </DisclosurePanel>
+          </>
+          )}
         </Disclosure>
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
