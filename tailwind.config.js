@@ -13,4 +13,4 @@ module.exports = {
   plugins: [],
 }
 
-// require('@tailwindcss/aspect-ratio') , require('tailwindcss/form')
+require('@tailwindcss/aspect-ratio') , require('tailwindcss/form')
