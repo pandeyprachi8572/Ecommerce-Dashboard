@@ -501,17 +501,10 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
 import React ,{useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
-
+import {Link} from 'react-router-dom';
+import { ChevronLeftIcon, ChevronRightIcon , StarIcon} from '@heroicons/react/20/solid'
 import {
   increment ,
   incrementAsync,
@@ -579,31 +572,31 @@ const filters = [
     ],
   },
 ]
-const products = [
+const oldproducts = [
   {
     id: 1,
     name: 'Basic Tee',
     href: '#',
-    imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
+    thumbnail: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    title: "Front of men's Basic Tee in black.",
     price: '$35',
     color: 'Black',
   },
   {
     id: 2,
     name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
+    thumbnail: '#',
+    thumbnail: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    title: "Front of men's Basic Tee in black.",
     price: '$35',
     color: 'Black',
   },
   {
     id: 3,
     name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
+    thumbnail: '#',
+    thumbnail: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    title: "Front of men's Basic Tee in black.",
     price: '$35',
     color: 'Black',
   },
@@ -738,7 +731,7 @@ export default function ProductList(){
                     {sortOptions.map((option) => (
                       <MenuItem key={option.name}>
                         <a
-                          href={option.href}
+                          thumbnail={option.thumbnail}
                           className={classNames(
                             option.current ? 'font-medium text-gray-900' : 'text-gray-500',
                             'block px-4 py-2 text-sm data-[focus]:bg-gray-100 data-[focus]:outline-none',
@@ -839,30 +832,42 @@ export default function ProductList(){
               {/* Product grid */}
               <div className="lg:col-span-3">  
               <div className="bg-white">
+                
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
-            <div key={product.id} className="group relative">
+            <Link to="/product/detail">
+            <div key={product.id} className="group relative border-solid border-2  p-2 border-gray-200">
               <img
-                alt={product.imageAlt}
-                src={product.imageSrc}
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+                alt={product.title}
+                src={product.thumbnail}
+                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-60"
               />
               <div className="mt-4 flex justify-between">
                 <div>
+
                   <h3 className="text-sm text-gray-700">
-                    <a href={product.href}>
+                    <a thumbnail={product.thumbnail}>
                       <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
+                      {product.title}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    <StarIcon className ="w-6 h-6 inline"></StarIcon>
+                    <span className='align-bottom'>{product.rating}</span>
+                    </p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">{product.price}</p>
+                <div>
+                
+               
+               <p className="text-sm block font-medium text-gray-900">${Math.price(product.price*(1-product.discountPercentage/100))}</p>
+              <p className="text-sm block line font-medium text-gray-900">${product.price}</p>
+              </div>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -880,13 +885,13 @@ export default function ProductList(){
           <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
                 <div className="flex flex-1 justify-between sm:hidden">
                    <a
-                     href="#"
+                     thumbnail="#"
                      className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
                    >
                      Previous
                    </a>
                    <a
-                     href="#"
+                     thumbnail="#"
                      className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
                    >
                      Next
@@ -906,7 +911,7 @@ export default function ProductList(){
                        className="isolate inline-flex -space-x-px rounded-md shadow-sm"
                      >
                        <a
-                         href="#"
+                         thumbnail="#"
                          className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                        >
                          <span className="sr-only">Previous</span>
@@ -917,19 +922,19 @@ export default function ProductList(){
                        </a>
                        {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
                        <a
-                         href="#"
+                         thumbnail="#"
                          aria-current="page"
                          className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                        >
                          1
                        </a>
                        <a
-                         href="#"
+                         thumbnail="#"
                          className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                       >
                         2
                       </a>                       <a
-                       href="#"
+                       thumbnail="#"
                       className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                      >
                          <span className="sr-only">Next</span>

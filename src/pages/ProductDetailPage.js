@@ -1,17 +1,12 @@
 import Navbar from "../features/navbar/Navbar";
 import ProductDetail from "../features/product/components/ProductDetail";
-
-
 function ProductDetailPage() {
-    return ( 
-        <div>
+return ( 
+    <div>
             <Navbar>
                 <ProductDetail></ProductDetail>
-            </Navbar>
-            
-            
-        </div>
+            </Navbar>           
+    </div>
      );
 }
-
 export default ProductDetailPage;
