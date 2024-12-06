@@ -9,7 +9,6 @@ export function addToCart(item) {
     resolve({ data });
   });
 }
-
 export function fetchItemsByUserId() {
   return new Promise(async (resolve) => {
     const response = await fetch('/cart');
@@ -17,7 +16,6 @@ export function fetchItemsByUserId() {
     resolve({ data });
   });
 }
-
 export function updateCart(update) {
   return new Promise(async (resolve) => {
     const response = await fetch('/cart/' + update.id, {
@@ -29,7 +27,6 @@ export function updateCart(update) {
     resolve({ data });
   });
 }
-
 export function deleteItemFromCart(itemId) {
   return new Promise(async (resolve) => {
     const response = await fetch('/cart/' + itemId, {
@@ -40,7 +37,6 @@ export function deleteItemFromCart(itemId) {
     resolve({ data: { id: itemId } });
   });
 }
-
 export function resetCart() {
   // get all items of user's cart - and then delete each
   return new Promise(async (resolve) => {

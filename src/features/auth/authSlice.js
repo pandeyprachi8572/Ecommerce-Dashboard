@@ -1,12 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {
-  loginUser,
-  createUser,
-  signOut,
-  checkAuth,
-  resetPasswordRequest,
-  resetPassword,
-} from './authAPI';
+
+
+import { loginUser , createUser,signOut,checkAuth ,
+   resetPasswordRequest,resetPassword} from './authApi'
 import { updateUser } from '../user/userAPI';
 
 const initialState = {
@@ -39,7 +35,6 @@ export const loginUserAsync = createAsyncThunk(
     }
   }
 );
-
 export const checkAuthAsync = createAsyncThunk('user/checkAuth', async () => {
   try {
     const response = await checkAuth();
